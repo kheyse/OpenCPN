@@ -6720,7 +6720,8 @@ void s57_DrawExtendedLightSectors( ocpnDC& dc, ViewPort& viewport, std::vector<s
             int lpx = lightPos.x;
             int lpy = lightPos.y;
             int npoints = 1;
-            wxPoint arcpoints[150]; // Size relates to "step" below.
+            const size_t max_npoints = 150;
+            wxPoint arcpoints[max_npoints]; // Size relates to "step" below.
 
             arcpoints[0].x = lpx + (int) ( rangePx * cos( angle1 * PI / 180. ) );
             arcpoints[0].y = lpy - (int) ( rangePx * sin( angle1 * PI / 180. ) );
@@ -6748,6 +6749,7 @@ void s57_DrawExtendedLightSectors( ocpnDC& dc, ViewPort& viewport, std::vector<s
                 for( double a = angle1; a <= angle2 + 0.1; a += step ) {
                     int x = lpx + (int) ( rangePx * cos( a * PI / 180. ) );
                     int y = lpy - (int) ( rangePx * sin( a * PI / 180. ) );
+                    wxASSERT( npoints < max_npoints );
                     arcpoints[npoints].x = x;
                     arcpoints[npoints].y = y;
                     npoints++;
