@@ -64,7 +64,7 @@ StatWin::StatWin( wxWindow *win )
 #ifndef __WXMAC__
     wstyle |= wxFRAME_SHAPED;
 #endif
-#ifdef __WXMAC__
+#if defined(__WXOSX__) && !wxCHECK_VERSION(2, 9, 0)
     wstyle |= wxSTAY_ON_TOP;
 #endif
 

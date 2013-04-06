@@ -50,7 +50,7 @@ ocpnFloatingCompassWindow::ocpnFloatingCompassWindow( wxWindow *parent )
 #ifndef __WXMAC__
     wstyle |= wxFRAME_SHAPED;
 #endif    
-#ifdef __WXMAC__
+#if defined(__WXOSX__) && !wxCHECK_VERSION(2, 9, 0)
     wstyle |= wxSTAY_ON_TOP;
 #endif
     wxDialog::Create( parent, -1, _T(""), wxPoint( 0, 0 ), wxSize( -1, -1 ), wstyle );

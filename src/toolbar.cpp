@@ -177,7 +177,7 @@ ocpnFloatingToolbarDialog::ocpnFloatingToolbarDialog( wxWindow *parent, wxPoint 
 
     m_ptoolbar = NULL;
 
-#ifdef __WXOSX__
+#if defined(__WXOSX__) && !wxCHECK_VERSION(2, 9, 0)
     wstyle |= wxSTAY_ON_TOP;
 #endif
     wxDialog::Create( parent, -1, _T("ocpnToolbarDialog"), wxPoint( -1, -1 ), wxSize( -1, -1 ),
